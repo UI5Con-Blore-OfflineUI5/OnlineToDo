@@ -3,7 +3,7 @@
 		<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
 			<TextArea width="100%" rows="2" />
 			<Label text="Due Date"/>
-			<DatePicker />
+			<DatePicker/>
 		</VBox>
 	</FlexBox>
 	<beginButton>

@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/GroupHeaderListItem",
-	"UI5ConOnlineApp/formatter/formatter"
-], function (Controller, GroupHeaderListItem, formatter) {
+	"UI5ConOnlineApp/formatter/formatter",
+	"sap/ui/core/format/DateFormat"
+], function (Controller, GroupHeaderListItem, formatter, DateFormat) {
 	"use strict";
 
 	return Controller.extend("UI5ConOnlineApp.controller.View1", {
@@ -11,18 +12,19 @@ sap.ui.define([
 
 		},
 		onBeforeRendering: function () {
-			var oJSONModel = this.getView().getModel("oJSONModel");
-			var oDataModel = this.getView().getModel();
-			oDataModel.read("/ToDos", {
-				success: function (oData) {
-					oJSONModel.setData({
-						"ToDos": oData.results
-					});
-				},
-				error: function (response) {}
-			});
+			// var oJSONModel = this.getView().getModel("oJSONModel");
+			// var oDataModel = this.getView().getModel();
+			// oDataModel.read("/ToDos", {
+			// 	success: function (oData) {
+			// 		oJSONModel.setData({
+			// 			"ToDos": oData.results
+			// 		});
+			// 	},
+			// 	error: function (response) {}
+			// });
+			this.fnFetchToDos();
 		},
-		oDataCall: function () {
+		fnFetchToDos: function () {
 			var oJSONModel = this.getView().getModel("oJSONModel");
 			var oDataModel = this.getView().getModel();
 			oJSONModel.setData({
@@ -55,9 +57,13 @@ sap.ui.define([
 			var oJSONModel = this.getView().getModel("oJSONModel");
 			var Content = evt.getSource().getParent().getContent()[0].getItems()[0].getItems()[0].getValue();
 			var Due = evt.getSource().getParent().getContent()[0].getItems()[0].getItems()[2].getDateValue();
+			var dateFormat = DateFormat.getDateTimeInstance({
+				pattern: "yyyy-MM-ddTKK:mm:ss"
+			});
+			var dateOdataVal = dateFormat.format(Due);
 			var Data = {
 				"Content": Content,
-				"DueDate": Due
+				"DueDate": dateOdataVal
 			};
 			var array = oJSONModel.getData().ToDos;
 			array.push(Data);
@@ -100,13 +106,30 @@ sap.ui.define([
 			});
 		},
 		mySuccessHandler: function (Response) {
-			this.oDataCall();
+			this.fnFetchToDos();
 		},
 		myErrorHandler: function (error) {
 
 		},
 		fnClose: function (evt) {
 			evt.getSource().getParent().close();
+		},
+		onChangeDatePicker: function (oEvent) {
+			// Format date to remove UTC issue
+			var oDatePicker = oEvent.getSource();
+			var oNewDate = oDatePicker.getDateValue();
+			if (oNewDate) {
+				oDatePicker.setDateValue(this.convertDateTimeToDateOnly(oNewDate));
+			}
+		},
+		convertDateTimeToDateOnly: function (oDateTime) {
+			var oFormatDate = DateFormat.getDateTimeInstance({
+				pattern: "yyyy-MM-ddTKK:mm:ss"
+			});
+			var oDate = oFormatDate.format(oDateTime);
+			oDate = oDate.split("T");
+			var oDateActual = oDate[0];
+			return new Date(oDateActual);
 		}
 	});
 

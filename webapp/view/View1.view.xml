@@ -9,11 +9,6 @@
 						<Button icon="sap-icon://add" press="handleNewToDoButtonPress"/>
 					</Toolbar>
 				</headerToolbar>
-				<!--<infoToolbar>-->
-				<!--	<Toolbar active="true">-->
-				<!--		<Label text="Online"/>-->
-				<!--	</Toolbar>-->
-				<!--</infoToolbar>-->
 				<CustomListItem>
 					<FlexBox direction="Row" alignItems="Start" justifyContent="SpaceBetween">
 						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
