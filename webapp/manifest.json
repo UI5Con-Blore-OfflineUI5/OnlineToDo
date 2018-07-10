@@ -54,8 +54,8 @@
 		"dependencies": {
 			"minUI5Version": "1.30.0",
 			"libs": {
-				"sap.ui.core": {},
 				"sap.m": {},
+				"sap.ui.core": {},
 				"sap.ui.layout": {}
 			}
 		},
@@ -71,7 +71,17 @@
 				}
 			},
 			"": {
-				"dataSource": "mainService"
+				"dataSource": "mainService",
+					"settings": {
+					"defaultCountMode": "Inline",
+					"defaultUpdateMethod": "PUT"
+				}
+			},
+			"oJSONModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"dataSource": "mainService",
+				"preload": true
 			}
 		},
 		"resources": {
