@@ -1,11 +1,9 @@
 <Dialog xmlns="sap.m" title="New ToDo">
 	<FlexBox direction="Row" alignItems="Start" justifyContent="SpaceBetween">
 		<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-			<TextArea width="100%" value="" rows="2"/>
+			<TextArea width="100%" rows="2" />
 			<Label text="Due Date"/>
-			<DatePicker value=""/>
-			<Label text="Last Changed By"/>
-			<Text text=""/>
+			<DatePicker />
 		</VBox>
 	</FlexBox>
 	<beginButton>
