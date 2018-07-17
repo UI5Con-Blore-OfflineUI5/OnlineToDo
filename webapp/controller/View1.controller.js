@@ -1,27 +1,17 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/GroupHeaderListItem",
-	"UI5ConOnlineApp/formatter/formatter",
+	"UI5ConOfflineApp/formatter/formatter",
 	"sap/ui/core/format/DateFormat"
 ], function (Controller, GroupHeaderListItem, formatter, DateFormat) {
 	"use strict";
 
-	return Controller.extend("UI5ConOnlineApp.controller.View1", {
+	return Controller.extend("UI5ConOfflineApp.controller.View1", {
 		formatter: formatter,
 		onInit: function () {
 
 		},
 		onBeforeRendering: function () {
-			// var oJSONModel = this.getView().getModel("oJSONModel");
-			// var oDataModel = this.getView().getModel();
-			// oDataModel.read("/ToDos", {
-			// 	success: function (oData) {
-			// 		oJSONModel.setData({
-			// 			"ToDos": oData.results
-			// 		});
-			// 	},
-			// 	error: function (response) {}
-			// });
 			this.fnFetchToDos();
 		},
 		fnFetchToDos: function () {
@@ -46,7 +36,7 @@ sap.ui.define([
 			}).addStyleClass("sapMH1Style");
 		},
 		handleNewToDoButtonPress: function () {
-			var oToDoDialog = sap.ui.xmlfragment("UI5ConOnlineApp.fragments.ToDoNew", this.getView().getController());
+			var oToDoDialog = sap.ui.xmlfragment("UI5ConOfflineApp.fragments.ToDoNew", this.getView().getController());
 			//Bind Data
 			this.getView().addDependent(oToDoDialog);
 			oToDoDialog.open();
@@ -82,7 +72,7 @@ sap.ui.define([
 
 		},
 		fnEditToDo: function (evt) {
-			var oToDoDialog = sap.ui.xmlfragment("UI5ConOnlineApp.fragments.ToDo", this.getView().getController());
+			var oToDoDialog = sap.ui.xmlfragment("UI5ConOfflineApp.fragments.ToDo", this.getView().getController());
 			//Bind Data
 			this.getView().addDependent(oToDoDialog);
 			var oList = this.byId("ToDoList");
