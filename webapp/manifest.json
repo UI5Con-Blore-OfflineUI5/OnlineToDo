@@ -2,7 +2,7 @@
 	"_version": "1.1.0",
 	"sap.app": {
 		"_version": "1.1.0",
-		"id": "UI5ConOfflineApp",
+		"id": "UI5ConOfflineApp5",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -43,16 +43,20 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
 		"rootView": {
-			"viewName": "UI5ConOfflineApp.view.View1",
-			"type": "XML"
+			"viewName": "UI5ConOfflineApp5.view.View1",
+			"type": "XML",
+			"async": true
 		},
 		"dependencies": {
-			"minUI5Version": "1.30.0",
+			"minUI5Version": "1.60.0",
 			"libs": {
 				"sap.m": {},
 				"sap.ui.core": {},
@@ -67,12 +71,12 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "UI5ConOfflineApp.i18n.i18n"
+					"bundleName": "UI5ConOfflineApp5.i18n.i18n"
 				}
 			},
 			"": {
 				"dataSource": "mainService",
-					"settings": {
+				"settings": {
 					"defaultCountMode": "Inline",
 					"defaultUpdateMethod": "PUT"
 				}
@@ -80,14 +84,28 @@
 			"oJSONModel": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {},
-				"dataSource": "mainService",
-				"preload": true
+				"dataSource": "mainService"
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"async": true
+			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zofflinetodo/webapp",
+		"_version": "1.1.0"
 	}
 }

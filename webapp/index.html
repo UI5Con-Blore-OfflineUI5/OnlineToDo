@@ -5,24 +5,32 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta charset="UTF-8">
 
-		<title>UI5ConOfflineApp</title>
+		<title>UI5ConOfflineApp5</title>
 
 		<script id="sap-ui-bootstrap"
 			src="../../resources/sap-ui-core.js"
 			data-sap-ui-libs="sap.m"
 			data-sap-ui-theme="sap_bluecrystal"
 			data-sap-ui-compatVersion="edge"
-			data-sap-ui-resourceroots='{"UI5ConOfflineApp": ""}'>
+			data-sap-ui-resourceroots='{"UI5ConOfflineApp5": ""}'
+			data-sap-ui-preload="async">
 		</script>
-
+<script>
+// Check that service workers are registered
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js');
+  });
+}
+</script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-
-		<script>
-			sap.ui.getCore().attachInit(function() {
+	<script>
+		sap.ui.getCore().attachInit(function() {
 				new sap.m.Shell({
 					app: new sap.ui.core.ComponentContainer({
 						height : "100%",
-						name : "UI5ConOfflineApp"
+						name : "UI5ConOfflineApp5"
 					})
 				}).placeAt("content");
 			});

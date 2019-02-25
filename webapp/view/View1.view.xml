@@ -1,4 +1,4 @@
-<mvc:View controllerName="UI5ConOfflineApp.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" height="100%">
+<mvc:View controllerName="UI5ConOfflineApp5.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" height="100%">
 	<FlexBox alignItems="Center" justifyContent="Center">
 		<Panel expandable="false" width="400px">
 			<List id="ToDoList" height="100%" mode="SingleSelectMaster" rememberSelections="false" selectionChange=".fnEditToDo" items="{ path: 'oJSONModel>/ToDos', sorter: { path: 'Content', descending: true }}">
